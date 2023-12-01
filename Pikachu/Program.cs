@@ -44,9 +44,9 @@ class Program
     {
         List<VirtualPet> pets = new List<VirtualPet>();
 
-        pets.Add(new VirtualPet("Nusse", 3));
-        pets.Add(new VirtualPet("Pikachu", 2));
-        pets.Add(new VirtualPet("Hedwig", 1));
+        pets.Add(new VirtualPet("Nusse", 7));
+        pets.Add(new VirtualPet("Pikachu", 15));
+        pets.Add(new VirtualPet("Hedwig", 10));
 
 
         while (true)
@@ -66,6 +66,30 @@ class Program
             {
                 Console.WriteLine("Thank you for taking care of the pets!");
                 return;
+            }
+
+            VirtualPet selectedPet = pets[petChoice - 1];
+
+            Console.WriteLine($"{selectedPet.Name} is {selectedPet.Age} years old.");
+            Console.WriteLine("1. Give food");
+            Console.WriteLine("2. Cuddle");
+            Console.WriteLine("3. Check if the pet needs to go to the toilet");
+
+            int choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    selectedPet.Feed();
+                    break;
+                case 2:
+                    selectedPet.Cuddle();
+                    break;
+                case 3: selectedPet.CheckIfToiletTime();
+                    break;
+                default:
+                    Console.WriteLine("Not a valid choice, try again.");
+                    break;
             }
         }
     }
